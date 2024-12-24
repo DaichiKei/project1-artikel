@@ -6,7 +6,7 @@ import axios from "axios";
 import Image from "next/image"; // Import Image untuk optimasi gambar
 
 // Definisikan tipe data artikel
-interface Article {
+interface Artikel {
     judul: string;
     penulis: string;
     tanggal: string;
@@ -18,7 +18,7 @@ interface Article {
 
 export default function ArtikelList() {
     // State dengan tipe eksplisit
-    const [articles, setArticles] = useState<Article[]>([]);
+    const [artikel, setArtikel] = useState<Artikel[]>([]);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
 
@@ -30,7 +30,7 @@ export default function ArtikelList() {
 
                 // Validasi bahwa data adalah array
                 if (Array.isArray(data)) {
-                    setArticles(data as Article[]); // Cast data ke tipe Article[]
+                    setArtikel(data as Artikel[]); 
                 } else {
                     setError("Data yang diterima bukan array.");
                 }
@@ -55,7 +55,7 @@ export default function ArtikelList() {
         );
     }
 
-    if (articles.length === 0) {
+    if (artikel.length === 0) {
         return (
             <div className="flex justify-center items-center h-screen bg-gray-100">
                 <p className="text-gray-600 text-xl font-semibold">Memuat data...</p>
@@ -67,30 +67,30 @@ export default function ArtikelList() {
         <div className="bg-gray-50 min-h-screen p-6">
             <h1 className="text-3xl font-bold text-gray-800 text-center mb-8">Daftar Artikel</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {articles.map((article, index) => (
+                {artikel.map((artikel, index) => (
                     <div
                         key={index}
                         className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 card hover:bg-slate-200 hover:cursor-pointer ease-in-out duration-300"
-                        onClick={() => router.push(`/artikel/${article.id}`)}
+                        onClick={() => router.push(`/artikel/${artikel.id}`)}
                     >
                         <div className="relative w-full h-48">
                             <Image
-                                src={article.gambar || "https://via.placeholder.com/400"}
-                                alt={article.judul || "Gambar tidak tersedia"}
+                                src={artikel.gambar || "https://via.placeholder.com/400"}
+                                alt={artikel.judul || "Gambar tidak tersedia"}
                                 fill
                                 className="object-cover"
                             />
                         </div>
                         <div className="p-4">
                             <h2 className="text-xl font-semibold text-gray-800 mb-2">
-                                {article.judul || "Judul tidak tersedia"}
+                                {artikel.judul || "Judul tidak tersedia"}
                             </h2>
                             <p className="text-sm text-gray-600">
-                                <strong>Penulis:</strong> {article.penulis || "Tidak diketahui"}
+                                <strong>Penulis:</strong> {artikel.penulis || "Tidak diketahui"}
                             </p>
                             <p className="text-sm text-gray-600">
                                 <strong>Tanggal:</strong> <br />
-                                {new Date(article.tanggal).toLocaleString("id-ID", {
+                                {new Date(artikel.tanggal).toLocaleString("id-ID", {
                                     weekday: "long",
                                     year: "numeric",
                                     month: "long",
@@ -100,10 +100,10 @@ export default function ArtikelList() {
                                     hour12: false,
                                 }) || "Tidak tersedia"}
                             </p>
-                            {article.last_update && (
+                            {artikel.last_update && (
                                 <p className="text-sm text-gray-500 mt-2">
                                     <strong>Terakhir Diedit:</strong> <br />
-                                    {new Date(article.last_update).toLocaleString("id-ID", {
+                                    {new Date(artikel.last_update).toLocaleString("id-ID", {
                                         weekday: "long",
                                         year: "numeric",
                                         month: "long",
@@ -115,7 +115,7 @@ export default function ArtikelList() {
                                 </p>
                             )}
                             <p className="text-gray-700 mt-4">
-                                {article.isi ? `${article.isi.slice(0, 100)}...` : "Konten tidak tersedia"}
+                                {artikel.isi ? `${artikel.isi.slice(0, 100)}...` : "Konten tidak tersedia"}
                             </p>
                         </div>
                     </div>
