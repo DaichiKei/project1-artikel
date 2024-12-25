@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Image from "next/image"; // Gunakan komponen Image untuk optimasi gambar
+import Image from "next/image";
 
 interface Artikel {
     judul: string;

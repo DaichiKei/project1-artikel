@@ -1,6 +1,5 @@
 import pool from '@/configs/db.js';
 
-// Fungsi untuk menangani error koneksi secara konsisten
 const handleConnectionError = (err) => {
     if (err.code === 'ER_CON_COUNT_ERROR') {
         console.log('Terlalu banyak koneksi ke database.');

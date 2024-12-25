@@ -3,21 +3,19 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import Image from "next/image"; // Import Image untuk optimasi gambar
+import Image from "next/image"; 
 
-// Definisikan tipe data artikel
 interface Artikel {
     judul: string;
     penulis: string;
     tanggal: string;
     isi: string;
     gambar: string;
-    last_update: string | null; // last_update bisa null
+    last_update: string | null;
     id: number;
 }
 
 export default function ArtikelList() {
-    // State dengan tipe eksplisit
     const [artikel, setArtikel] = useState<Artikel[]>([]);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
@@ -28,14 +26,12 @@ export default function ArtikelList() {
                 const response = await axios.get('/api/artikel');
                 const data = response.data.data;
 
-                // Validasi bahwa data adalah array
                 if (Array.isArray(data)) {
                     setArtikel(data as Artikel[]); 
                 } else {
                     setError("Data yang diterima bukan array.");
                 }
             } catch (err: unknown) {
-                // Periksa apakah error berasal dari Axios
                 if (axios.isAxiosError(err)) {
                     setError(err.message);
                 } else {

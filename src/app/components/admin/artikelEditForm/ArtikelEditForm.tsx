@@ -32,7 +32,7 @@ const ArtikelEditForm = ({ id }: Componen) => {
   };
 
   const handleEdit = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); 
     try {
       setIsSending(true);
       await axios.patch(`/api/artikel/${id}`, {
@@ -41,7 +41,7 @@ const ArtikelEditForm = ({ id }: Componen) => {
         isi,
       });
       setIsSending(false);
-      router.push("/admin/artikel/list"); // Redirect after successful patch
+      router.push("/admin/artikel/list"); 
     } catch (error) {
       setIsSending(false);
       console.error("Error editing artikel:", error);
