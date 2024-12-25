@@ -64,12 +64,3 @@ You can also check out the [Next.js GitHub repository](https://github.com/vercel
 The easiest way to deploy your Next.js app is using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), created by the makers of Next.js.
 
 For more details, refer to the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
-```
-
-### Changes made:
-1. **Added headings** for better organization.
-2. **Reformatted SQL code** to be properly enclosed in code blocks.
-3. **Grouped related sections** (Database, Development server, Editing the page, Font optimization, etc.) to make it more readable.
-4. **Improved clarity** in instructions and added some spacing between sections for better readability.
-
-This should make your `README.md` clearer and easier to follow!
