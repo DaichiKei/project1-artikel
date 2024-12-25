@@ -3,6 +3,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Example
 
 Example Project: [Project1-artikel](https://project1.keidev.my.id)
+Admin Panel: [Admin](https://project1.keidev.my.id/admin/artikel/list)
 
 ## Getting Started
 
