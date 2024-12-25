@@ -118,7 +118,7 @@ export default function Artikel({ params }: { params: Promise<Params> }) {
 
                 <div className="w-full bg-gray-100 mb-6">
                     <Image
-                        src={artikel.gambar || "https://via.placeholder.com/400"}
+                        src={artikel.gambar || "https://mgmall.s3.amazonaws.com/img/062023/390bed03e54f6440416f0568f61a82b563176996.jpg"}
                         alt={artikel.judul}
                         width={800}
                         height={600}

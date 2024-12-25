@@ -41,6 +41,13 @@ export async function PATCH(req: NextRequest, context: any) {
         }
 
         const result = await artikelModel.updateArtikel(body, id, tanggal)
+        if (result === 0) {
+            return res.json({
+                success: false,
+                data: 'Artikel tidak ditemukan!'
+    
+            }, {status: 404})
+        }
         return res.json({
             success: true,
             message: 'Artikel berhasil diubah',

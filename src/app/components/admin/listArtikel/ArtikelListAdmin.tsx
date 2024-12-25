@@ -50,6 +50,10 @@ export default function ArtikelListAdmin() {
         router.push(`/admin/artikel/create`);
     };
 
+    const handleHome = () => {
+        router.push(`/`);
+    };
+
     const handleLihat = (id: number) => {
         router.push(`/artikel/${id}`);
     };
@@ -86,12 +90,20 @@ export default function ArtikelListAdmin() {
         <div className="bg-gray-50 min-h-screen p-6">
             <div className="flex justify-between">
                 <h1 className="text-3xl font-bold text-gray-800 text-center mb-2">Daftar Artikel</h1>
+                <div>
+                <button
+                    className="px-4 py-1 mb-1 text-blue-600 hover:text-blue-900 font-semibold rounded-md transition ease-in-out duration-300"
+                    onClick={handleHome}
+                >
+                    Home
+                </button>
                 <button
                     className="px-4 py-1 mb-1 border border-green-600 text-green-600 bg-green-100 hover:bg-green-600 hover:text-white font-semibold rounded-md transition ease-in-out duration-300"
                     onClick={handleCreate}
                 >
                     Buat
                 </button>
+                </div>
             </div>
 
             <table className="w-full table-auto bg-white shadow-md rounded-lg overflow-hidden border">

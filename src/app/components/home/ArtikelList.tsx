@@ -62,10 +62,21 @@ export default function ArtikelList() {
             </div>
         );
     }
+    const handleAdminList = () => {
+        router.push(`/admin/artikel/list`);
+    };
 
     return (
         <div className="bg-gray-50 min-h-screen p-6">
-            <h1 className="text-3xl font-bold text-gray-800 text-center mb-8">Daftar Artikel</h1>
+            <div className="flex justify-between">
+                <h1 className="text-3xl font-bold text-gray-800 text-center mb-2">Daftar Artikel</h1>
+                <button
+                    className="px-4 py-1 mb-1 text-red-600 hover:text-red-800 font-semibold rounded-md transition ease-in-out duration-300"
+                    onClick={handleAdminList}
+                >
+                    Admin
+                </button>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {artikel.map((artikel, index) => (
                     <div
@@ -75,7 +86,7 @@ export default function ArtikelList() {
                     >
                         <div className="relative w-full h-48">
                             <Image
-                                src={artikel.gambar || "https://via.placeholder.com/400"}
+                                src={artikel.gambar || "https://mgmall.s3.amazonaws.com/img/062023/390bed03e54f6440416f0568f61a82b563176996.jpg"}
                                 alt={artikel.judul || "Gambar tidak tersedia"}
                                 fill
                                 className="object-cover"

@@ -81,11 +81,19 @@ const updateArtikel = async (data, id, tanggal) => {
     let conn;
     try {
         conn = await pool.getConnection();
-        const [result] = await conn.query(
-            `UPDATE artikel SET judul = ?, penulis = ?, isi = ?, last_update = ?, gambar = ? WHERE id = ?`,
-            [data.judul, data.penulis, data.isi, tanggal, data.gambar || null, id]
-        );
-        return result.affectedRows;
+        if (!data.gambar) {
+            const [result] = await conn.query(
+                `UPDATE artikel SET judul = ?, penulis = ?, isi = ?, last_update = ? WHERE id = ?`,
+                [data.judul, data.penulis, data.isi, tanggal, id]
+            );
+            return result.affectedRows;
+        } else {
+            const [result] = await conn.query(
+                `UPDATE artikel SET judul = ?, penulis = ?, isi = ?, last_update = ?, gambar = ? WHERE id = ?`,
+                [data.judul, data.penulis, data.isi, tanggal, data.gambar || null, id]
+            );
+            return result.affectedRows;
+        }
     } catch (err) {
         handleConnectionError(err);
     } finally {
