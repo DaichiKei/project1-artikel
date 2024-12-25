@@ -109,9 +109,13 @@ export default function Artikel({ params }: { params: Promise<Params> }) {
                 <div className="mb-4">
                     <p
                         className="text-base text-gray-700 leading-relaxed text-justify"
-                        dangerouslySetInnerHTML={{ __html: artikel.isi }}
+                        dangerouslySetInnerHTML={{
+                            __html: artikel.isi.replace(/\n/g, "<br /><br />"),
+                        }}
                     ></p>
                 </div>
+
+
                 <div className="w-full bg-gray-100 mb-6">
                     <Image
                         src={artikel.gambar || "https://via.placeholder.com/400"}

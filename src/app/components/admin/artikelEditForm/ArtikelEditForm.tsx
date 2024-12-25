@@ -41,7 +41,7 @@ const ArtikelEditForm = ({ id }: Componen) => {
         isi,
       });
       setIsSending(false);
-      router.push("/"); // Redirect after successful patch
+      router.push("/admin/artikel/list"); // Redirect after successful patch
     } catch (error) {
       setIsSending(false);
       console.error("Error editing artikel:", error);

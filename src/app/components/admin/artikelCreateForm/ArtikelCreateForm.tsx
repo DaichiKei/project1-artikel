@@ -20,7 +20,7 @@ const ArtikelCreateForm = () => {
                 penulis,
                 isi,
             });
-            router.push('/');
+            router.push("/admin/artikel/list");
         } catch (error) {
             console.error("Error creating artikel:", error);
         } finally {
